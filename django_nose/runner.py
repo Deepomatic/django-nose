@@ -149,7 +149,7 @@ def _get_options():
 if hasattr(BaseCommand, 'use_argparse'):
     # Django 1.8 and later uses argparse.ArgumentParser
     # Translate nose optparse arguments to argparse
-    class BaseRunner(DiscoverRunner):
+    class BaseRunner(BaseRunner):
 
         # Don't pass the following options to nosetests
         django_opts = [
@@ -263,7 +263,7 @@ if hasattr(BaseCommand, 'use_argparse'):
                     parser.add_argument(opt_long, **option_attrs)
 else:
     # Django 1.7 and earlier use optparse
-    class BaseRunner(DiscoverRunner):
+    class BaseRunner(BaseRunner):
         # Replace the builtin options with the merged django/nose options:
         options = _get_options()
 
